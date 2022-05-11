@@ -108,7 +108,7 @@ RSpec.describe Warehouse, type: :model do
 
     it 'falso quando Nome já está em uso' do
       # Arrangge
-      first_warehouse = Warehouse.create(name: 'Recife', code: 'REF',address:'Endereço', 
+      first_warehouse = Warehouse.create!(name: 'Recife', code: 'REF',address:'Endereço', 
                                       cep: '25000-000', city: 'Recife', area: 1000,
                                       description: 'Alguma coisa')
                                     
@@ -131,11 +131,8 @@ RSpec.describe Warehouse, type: :model do
                                 description: 'Galpão do aeroporto do Rio')
 
       # Act
-      code_size = warehouse.code.size
-      result = code_size == 3
-
       # Act
-      expect(result).to eq false
+      expect(warehouse).not_to be_valid false
     end
 
     it 'falso quando formato do CEP incorreto' do
