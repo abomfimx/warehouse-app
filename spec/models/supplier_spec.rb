@@ -6,7 +6,7 @@ RSpec.describe Supplier, type: :model do
       it 'falso quando Razão Social está vazio' do
         # Arrange
         supplier = Supplier.new(corporate_name: '', brand_name: 'XPTO', 
-                                registration_number: '1808269300017', full_address: 'Av Interlagos, 1000', city: 'São Paulo', state: 'SP', email: 'contato@xpto.com.br')
+                                registration_number: '1808269300017', full_address: 'Av Interlagos, 1000', city: 'São Paulo', state: 'SP', email: 'contato@xpto.com.br', phone: '11-555-5555')
         # Act
         result = supplier.valid?
 
@@ -17,7 +17,7 @@ RSpec.describe Supplier, type: :model do
       it 'falso quando Nome Fantasia está vazio' do
         # Arrange
         supplier = Supplier.new(corporate_name: 'XPTO S/A', brand_name: '',
-                                registration_number: '1808269300017', full_address: 'Av Interlagos, 1000', city: 'São Paulo', state: 'SP', email: 'contato@xpto.com.br')
+                                registration_number: '1808269300017', full_address: 'Av Interlagos, 1000', city: 'São Paulo', state: 'SP', email: 'contato@xpto.com.br', phone: '11-555-5555')
         # Act
         result = supplier.valid?
 
@@ -29,7 +29,7 @@ RSpec.describe Supplier, type: :model do
         # Arrange
         supplier = Supplier.new(corporate_name: 'XPTO S/A', brand_name: 'XPTO',
                                 registration_number: '9', full_address: 'Av Interlagos, 1000', 
-                                city: 'São Paulo', state: 'SP', email: 'contato@xpto.com.br')
+                                city: 'São Paulo', state: 'SP', email: 'contato@xpto.com.br', phone: '11-555-5555')
         # Act
         result = supplier.valid?
 
@@ -40,7 +40,7 @@ RSpec.describe Supplier, type: :model do
       it 'falso quando E-mail está vazio' do
         # Arrange
         supplier = Supplier.new(corporate_name: 'XPTO S/A', brand_name: 'XPTO',
-                                registration_number: '1808269300017', full_address: 'Av Interlagos, 1000', city: 'São Paulo', state: 'SP', email: '')
+                                registration_number: '1808269300017', full_address: 'Av Interlagos, 1000', city: 'São Paulo', state: 'SP', email: '', phone: '11-555-5555')
         # Act
         result = supplier.valid?
 
@@ -52,14 +52,14 @@ RSpec.describe Supplier, type: :model do
     it 'falso quando CNPJ já está em uso' do
       # Arrange
       first_supplier = Supplier.create!(corporate_name: 'XPTO S/A', brand_name: 'XPTO',
-                                        registration_number: '1808269300017', 
+                                        registration_number: '18082693000174', 
                                         full_address: 'Av Interlagos, 1000', city: 'São Paulo', 
-                                        state: 'SP', email: 'contato@xpto.com.br')
+                                        state: 'SP', email: 'contato@xpto.com.br', phone: '11-555-5555')
 
       second_supplier = Supplier.new(corporate_name: 'ACME S/A', brand_name: 'ACME',
-                                     registration_number: '1808269300017', 
+                                     registration_number: '18082693000174', 
                                      full_address: 'Av Brasil, 200', city: 'Recife', state: 'PE', 
-                                     email: 'contato@acme.com.br')
+                                     email: 'contato@acme.com.br', phone: '81-444-4444')
       
     # Act
     result = second_supplier.valid?
@@ -67,12 +67,12 @@ RSpec.describe Supplier, type: :model do
     expect(result).to eq false
     end
 
-    it 'falso quando CNPJ diferente de 13 caracteres' do
+    it 'falso quando CNPJ diferente de 14 caracteres' do
       # Arrange
       supplier = Supplier.new(corporate_name: 'XPTO S/A', brand_name: 'XPTO',
-                                  registration_number: '180826930001', 
+                                  registration_number: '1808269300017', 
                                   full_address: 'Av Interlagos, 1000', city: 'São Paulo', 
-                                  state: 'SP', email: 'contato@xpto.com.br')
+                                  state: 'SP', email: 'contato@xpto.com.br', phone: '11-555-5555')
       # Act
       # Assert
       expect(supplier).to_not be_valid

@@ -20,4 +20,5 @@ pt-BR:
         city: 'Cidade'
         state: 'Estado'
         email: 'E-mail'
+        phone: 'Telefone'
 
