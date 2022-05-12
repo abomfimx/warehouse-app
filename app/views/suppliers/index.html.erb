@@ -1,38 +1,29 @@
 <section id="suppliers">
-  <h2>Lista de Fornecedores</h2>
-  <div>
-    <%= link_to('Cadastrar Fornecedor', new_supplier_path ) %>
-  </div>
-  <% @suppliers.each do |s| %>
-  <div>
-    <dl>
-      <%# <dt> Razão Social:</dt> %>
-      <dt><%= Supplier.human_attribute_name(:corporate_name) %>:</dt>
-      <dd><%= s.corporate_name %></dd>
-      <dt> Nome Fantasia:</dt>
-      <dd><%= s.brand_name %></dd>
-      <dt>CNPJ</dt>
-      <dd><%= s.registration_number %></dd>
-      <dt>Endereço:</dt>
-      <dd><%= s.full_address %></dd>
-      <dt>Cidade:</dt>
-      <dd><%= s.city %></dd>
-      <dt>Estado:</dt>
-      <dd><%= s.state %></dd>
-      <dt>E-mail:</dt>
-      <dd><%= s.email %></dd>
-      <dt>Telefone:</dt>
-      <dd><%= s.phone %></dd>
-    </dl>
-  </div>
-    <hr>
+  <h1>Lista de Fornecedores</h1>
 
+  <% if @suppliers.any? %>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Localização</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @suppliers.each do |s| %>
+        <tr>
+          <td><%= link_to s.brand_name, s %></td>
+          <td><%= s.city %> - <%= s.state %> </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <p> Não existem fornecedores cadastrados </p>
   <% end %>
 
-  <%= link_to 'Home', root_path %>
+  <hr>
 
-  <% if @suppliers.empty? %>
-  <p> Não existem fornecedores cadastrados </p>
-  <% end  %>
+  <%= link_to 'Home', root_path %> | <%= link_to 'Cadastrar Fornecedor', new_supplier_path %>
 
 </section>

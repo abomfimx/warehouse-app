@@ -45,7 +45,7 @@ describe 'Usuário cadastra um Fornecedor' do
     expect(page).to have_content 'SP'
     expect(page).to have_content 'contato@xpto.com.br'
     expect(page).to have_content '11-555-5555'
-    expect(current_path).to eq suppliers_path
+    expect(current_path).to eq supplier_path(1)
   end
 
   it 'com dados incompletos' do
