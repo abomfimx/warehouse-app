@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'Usuário cadastra um Fornecedor' do
-  it 'a partir da tela de inicial' do
+  it 'a partir da tela inicial' do
     # Arrange
     visit root_path
     click_on 'Fornecedores'

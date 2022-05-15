@@ -70,9 +70,9 @@ RSpec.describe Supplier, type: :model do
     it 'falso quando CNPJ diferente de 14 caracteres' do
       # Arrange
       supplier = Supplier.new(corporate_name: 'XPTO S/A', brand_name: 'XPTO',
-                                  registration_number: '1808269300017', 
-                                  full_address: 'Av Interlagos, 1000', city: 'São Paulo', 
-                                  state: 'SP', email: 'contato@xpto.com.br', phone: '11-555-5555')
+                              registration_number: '1808269300017', 
+                              full_address: 'Av Interlagos, 1000', city: 'São Paulo', 
+                              state: 'SP', email: 'contato@xpto.com.br', phone: '11-555-5555')
       # Act
       # Assert
       expect(supplier).to_not be_valid
